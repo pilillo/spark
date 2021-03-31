@@ -58,6 +58,7 @@ ADD ${aws_java_url} ${SPARK_HOME}/jars
 ADD ${hadoop_aws_url} ${SPARK_HOME}/jars
 ADD ${hadoop_azure_url} ${SPARK_HOME}/jars
 ADD ${azure_blob_storage_url} ${SPARK_HOME}/jars
+RUN chmod -R ag+rx ${SPARK_HOME}/jars
 
 WORKDIR /opt/spark/work-dir
 RUN chmod g+w /opt/spark/work-dir
