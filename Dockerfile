@@ -21,15 +21,18 @@ ARG spark_user=spark
 ARG spark_uid=185
 
 RUN set -ex && \
+    sed -i 's/http:\/\/deb.\(.*\)/https:\/\/deb.\1/g' /etc/apt/sources.list && \
     apt-get update && \
     ln -s /lib /lib64 && \
     apt-get install -y wget bash tini libc6 libpam-modules krb5-user libnss3 procps && \
     mkdir -p /opt/spark && \
     mkdir -p /opt/spark/examples && \
+    mkdir -p /opt/spark/logs && \
     mkdir -p /opt/spark/work-dir && \
     rm /bin/sh && \
     ln -sv /bin/bash /bin/sh && \
     useradd -u ${spark_uid} ${spark_user} && \
+    echo "auth required pam_wheel.so use_uid" >> /etc/pam.d/su && \
     chgrp root /etc/passwd && chmod ug+rw /etc/passwd && \
     rm -rf /var/cache/apt/*
 
@@ -45,8 +48,8 @@ RUN wget ${spark_download_url} && \
     mv /${spark_distro}/examples ${SPARK_HOME}/examples && \
     mv /${spark_distro}/kubernetes/tests ${SPARK_HOME}/tests && \
     mv /${spark_distro}/data ${SPARK_HOME}/data && \
-    rm /${spark_artifact} && \
-    rm $SPARK_HOME/jars/guava-*.jar
+    rm /${spark_artifact}
+    #rm $SPARK_HOME/jars/guava-*.jar
 
 # inspired by https://github.com/lightbend/spark-history-server-docker/blob/master/Dockerfile
 ADD ${guava_url} ${SPARK_HOME}/jars
@@ -57,7 +60,6 @@ ADD ${hadoop_azure_url} ${SPARK_HOME}/jars
 ADD ${azure_blob_storage_url} ${SPARK_HOME}/jars
 
 WORKDIR /opt/spark/work-dir
-
 RUN chmod g+w /opt/spark/work-dir
 RUN chmod a+x /opt/decom.sh
 
