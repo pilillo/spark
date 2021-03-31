@@ -13,7 +13,7 @@ ARG spark_download_url=https://downloads.apache.org/spark/spark-${spark_version}
 ARG guava_url=https://repo1.maven.org/maven2/com/google/guava/guava/23.0/guava-23.0.jar
 ARG gcs_url=https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-latest-hadoop2.jar
 ARG aws_java_url=https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.7.4/aws-java-sdk-1.7.4.jar
-ARG hadoop_aws_url=https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.5/hadoop-aws-2.7.5.jar
+ARG hadoop_aws_url=https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.4/hadoop-aws-2.7.4.jar
 ARG hadoop_azure_url=https://repo1.maven.org/maven2/com/microsoft/azure/azure-storage/2.0.0/azure-storage-2.0.0.jar
 ARG azure_blob_storage_url=https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-azure/2.7.3/hadoop-azure-2.7.3.jar
 
