@@ -52,7 +52,7 @@ RUN wget ${spark_download_url} && \
     #rm $SPARK_HOME/jars/guava-*.jar
 
 # inspired by https://github.com/lightbend/spark-history-server-docker/blob/master/Dockerfile
-ADD ${guava_url} ${SPARK_HOME}/jars
+#ADD ${guava_url} ${SPARK_HOME}/jars
 ADD ${gcs_url} ${SPARK_HOME}/jars
 ADD ${aws_java_url} ${SPARK_HOME}/jars
 ADD ${hadoop_aws_url} ${SPARK_HOME}/jars
