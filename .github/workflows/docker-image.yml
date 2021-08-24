@@ -2,9 +2,8 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    tags:
+      - '*'
 
 jobs:
 
@@ -21,9 +20,13 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USER }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
         logout: true
+    
+    - uses: olegtarasov/get-tag@v2.1
+      id: tagName
         
     - name: Build the Docker image
       run: |
-        TAG=$(date +%Y%m%d)
-        docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USER }}/spark:${TAG}
-        docker push ${{ secrets.DOCKERHUB_USER }}/spark:${TAG}
+        export HADOOP_VERSION=$(echo $GIT_TAG_NAME| cut -d'_' -f 1)
+        export SPARK_VERSION=$(echo $GIT_TAG_NAME| cut -d'_' -f 2)
+        docker build --build-arg HADOOP_VERSION --build-arg SPARK_VERSION --tag ${{ secrets.DOCKERHUB_USER }}/spark:${GIT_TAG_NAME} -f Dockerfile .
+        docker push ${{ secrets.DOCKERHUB_USER }}/spark:${GIT_TAG_NAME}
