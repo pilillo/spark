@@ -42,9 +42,10 @@ RUN wget ${SPARK_DOWNLOAD_URL} && \
     tar -xf ${SPARK_ARTIFACT} && \
     mv /${SPARK_DISTRO}/jars ${SPARK_HOME}/jars && \
     mv /${SPARK_DISTRO}/bin ${SPARK_HOME}/bin && \
-    mv /${SPARK_DISTRO}/kubernetes/dockerfiles/spark/decom.sh /opt/ && \
+    #mv /${SPARK_DISTRO}/kubernetes/dockerfiles/spark/decom.sh /opt/ && \
+    mv /${SPARK_DISTRO}/kubernetes/dockerfiles/spark/* /opt/ && \
     mv /${SPARK_DISTRO}/sbin ${SPARK_HOME}/sbin && \
-    mv /${SPARK_DISTRO}/kubernetes/dockerfiles/spark/entrypoint.sh /opt/ && \
+    #mv /${SPARK_DISTRO}/kubernetes/dockerfiles/spark/entrypoint.sh /opt/ && \
     mv /${SPARK_DISTRO}/examples ${SPARK_HOME}/examples && \
     mv /${SPARK_DISTRO}/kubernetes/tests ${SPARK_HOME}/tests && \
     mv /${SPARK_DISTRO}/data ${SPARK_HOME}/data && \
