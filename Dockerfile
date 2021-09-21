@@ -62,7 +62,7 @@ RUN chmod -R ag+rx ${SPARK_HOME}/jars
 
 WORKDIR /opt/spark/work-dir
 RUN chmod g+w /opt/spark/work-dir
-RUN chmod a+x /opt/decom.sh
+RUN [ -d /opt/decom.sh ] && chmod a+x /opt/decom.sh || true
 
 ENTRYPOINT [ "/opt/entrypoint.sh" ]
 
