@@ -3,19 +3,19 @@ ARG java_image_tag=11-jre-slim
 
 FROM openjdk:${java_image_tag}
 
-ARG HADOOP_VERSION=2.7
-ARG SPARK_VERSION=3.1.1
+ARG HADOOP_VERSION=3.2
+ARG SPARK_VERSION=3.1.2
 
 ARG SPARK_DISTRO=spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}
 ARG SPARK_ARTIFACT=${SPARK_DISTRO}.tgz
 ARG SPARK_DOWNLOAD_URL=https://downloads.apache.org/spark/spark-${SPARK_VERSION}/${SPARK_ARTIFACT}
 
-ARG GUAVA_URL=https://repo1.maven.org/maven2/com/google/guava/guava/23.0/guava-23.0.jar
-ARG GCS_URL=https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-latest-hadoop2.jar
-ARG AWS_JAVA_URL=https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk/1.7.4/aws-java-sdk-1.7.4.jar
-ARG HADOOP_AWS_URL=https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/2.7.4/hadoop-aws-2.7.4.jar
-ARG HADOOP_AZURE_URL=https://repo1.maven.org/maven2/com/microsoft/azure/azure-storage/2.0.0/azure-storage-2.0.0.jar
-ARG AZURE_BLOB_STORAGE_URL=https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-azure/2.7.3/hadoop-azure-2.7.3.jar
+#ARG GUAVA_URL=https://repo1.maven.org/maven2/com/google/guava/guava/23.0/guava-23.0.jar
+ARG GCS_URL=https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-hadoop3-latest.jar
+ARG AWS_JAVA_URL=https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.12.9/aws-java-sdk-bundle-1.12.9.jar
+ARG HADOOP_AWS_URL=https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.2.0/hadoop-aws-3.2.0.jar
+ARG HADOOP_AZURE_URL=https://repo1.maven.org/maven2/com/microsoft/azure/azure-storage/8.6.6/azure-storage-8.6.6.jar
+ARG AZURE_BLOB_STORAGE_URL=https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-azure/3.2.0/hadoop-azure-3.2.0.jar
 
 ARG SPARK_USER=spark
 ARG SPARK_UID=185
