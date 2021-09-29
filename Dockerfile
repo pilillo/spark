@@ -9,7 +9,7 @@ ARG SPARK_VERSION=3.1.2
 ARG SPARK_DISTRO=spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}
 ARG SPARK_ARTIFACT=${SPARK_DISTRO}.tgz
 #ARG SPARK_DOWNLOAD_URL=https://downloads.apache.org/spark/spark-${SPARK_VERSION}/${SPARK_ARTIFACT}
-ARG ARG SPARK_DOWNLOAD_URL=https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/${SPARK_ARTIFACT}
+ARG SPARK_DOWNLOAD_URL=https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/${SPARK_ARTIFACT}
 
 #ARG GUAVA_URL=https://repo1.maven.org/maven2/com/google/guava/guava/23.0/guava-23.0.jar
 ARG GCS_URL=https://storage.googleapis.com/hadoop-lib/gcs/gcs-connector-hadoop3-latest.jar
